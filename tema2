@@ -1,0 +1,285 @@
+<?php
+//pb 1
+class nume {
+    private string $nume;
+    public function __construct($nume)
+    {
+        $this->nume=$nume;
+    }   
+    public function afisare_nume(){
+        echo"Hello, my name is $this->nume \n";
+    }
+}
+​
+$nume1 = new nume("Adrian");
+$nume1->afisare_nume();
+​
+//pb 2
+abstract class vehicul {
+    protected $marca;
+    protected $pret;
+    protected $capacitate_motor;
+    public function __construct($marca,$pret,$capacitate_motor)
+    {
+        $this->marca=$marca;
+        $this->pret=$pret;
+        $this->capacitate_motor=$capacitate_motor;
+    }
+    public function calc_pret_tva(){
+        $this->pret*=1.19;
+    }
+    public function getMarca(){
+        return $this->marca;
+    }
+    public function setMarca($tip){
+        $this->marca=$tip;
+    }
+    abstract function afisare_marca_pret();
+    abstract function avariat();
+    abstract function asigurare();
+}
+class motocicleta extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+        if($this->marca==="Mercedes" || $this->marca==="Audi"){
+            echo "da \n";
+        }
+        else{
+            echo "nu \n";
+        }
+    }
+    function asigurare()
+    {
+        if($this->capacitate_motor>2.5){
+            echo "4000 lei \n";
+        }
+        else if($this->capacitate_motor<=2.5&&$this->capacitate_motor>=2){
+            echo "2200 lei \n";
+        }
+        else if($this->capacitate_motor<2&&$this->capacitate_motor>=1.6){
+            echo "1600 lei \n";
+        }
+        else{
+            echo "1200 lei \n";
+        }
+    }
+}
+class bicicleta extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+        echo "improbabil \n";
+    }
+    function asigurare()
+    { //in caz de motor electric
+        if($this->capacitate_motor>0){
+            echo "250 lei \n";
+        }
+        else{
+            echo "Nu exista asigurare pt biciclete normale \n";
+        }
+    }
+}
+class barca extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+        if(!$this->marca==="Cirus"){
+            echo "da \n";
+        }
+        else{
+            echo "nu \n";
+        }
+    }
+    function asigurare()
+    {
+        if($this->capacitate_motor>4.5){
+            echo "10000 lei \n";
+        }
+        else if($this->capacitate_motor<=4.5&&$this->capacitate_motor>=1.3){
+            echo "1400 lei \n";
+        }
+        else{
+            echo "150 lei \n";
+        }
+    }
+}
+class masina extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+        if($this->marca==="Alfa Romeo" || $this->marca==="Seat"){
+            echo "da \n";
+        }
+        else{
+            echo "nu \n";
+        }
+    }
+    function asigurare()
+    {
+        if($this->capacitate_motor>2.5){
+            echo "4600 lei \n";
+        }
+        else if($this->capacitate_motor<=2.5&&$this->capacitate_motor>=2){
+            echo "2700 lei \n";
+        }
+        else if($this->capacitate_motor<2&&$this->capacitate_motor>=1.6){
+            echo "1700 lei \n";
+        }
+        else if($this->capacitate_motor<1.6&&$this->capacitate_motor>=1.4){
+            echo "1200 lei \n";
+        }
+        else{
+            echo "800 lei \n";
+        }
+    }
+}
+class trotineta extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+        if($this->marca==="AirMotion"){
+            echo "da \n";
+        }
+        else{
+            echo "nu \n";
+        }
+    }
+    function asigurare()
+    {
+        if($this->capacitate_motor>0){
+            echo "300 lei \n";
+        }
+        else{
+            echo "0 lei \n";
+        }
+    }
+}
+class caruta extends vehicul {
+    function afisare_marca_pret(){
+        echo "nu exista marca de caruta \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+            echo "cel mai probabil \n";
+       
+    }
+    function asigurare()
+    {
+        echo "poate asigurare pe cal \n";
+    }
+}
+class avion extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n $this->capacitate_motor \n";
+    }
+    function avariat()
+    {
+        echo"nu \n";
+    }
+    function asigurare()
+    {
+        echo "da \n";
+    }
+}
+class camion extends vehicul {
+    function afisare_marca_pret(){
+        echo "$this->marca \n $this->pret $ \n";
+    }
+    function avariat()
+    {
+        if($this->marca==="Man" || $this->marca==="Volvo"){
+            echo "da \n";
+        }
+        else{
+            echo "nu \n";
+        }
+    }
+    function asigurare()
+    {
+        if($this->capacitate_motor>4){
+            echo "8000 lei \n";
+        }
+        else if($this->capacitate_motor<=4&&$this->capacitate_motor>=2){
+            echo "6000 lei \n";
+        }
+        else{
+            echo "3000 lei \n";
+        }
+    }
+}
+​
+$veh1=new motocicleta("Audi",23000,1.6);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+$veh1->setMarca("Toyota");
+$veh1->afisare_marca_pret();
+​
+$veh1=new bicicleta("Giant",2000,0.2);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+$veh1->setMarca("Bianchi");
+$veh1->afisare_marca_pret();
+​
+$veh1=new barca("Cirus",18000,1.2);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+​
+$veh1=new masina("Hyundai",33000,1.6);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+$veh1->setMarca("Kia");
+$veh1->afisare_marca_pret();
+​
+$veh1=new trotineta("AirMotion",1000,0);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+​
+$veh1=new caruta("Cu multi cai",300,0);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+​
+$veh1=new avion("AirBus",400000,20);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+​
+$veh1=new camion("Man",15000,2.8);
+$veh1->afisare_marca_pret();
+$veh1->avariat();
+$veh1->asigurare();
+$veh1->setMarca("Mercedes");
+$veh1->afisare_marca_pret();
+​
+//pb 3
+class calcul_salariu{
+    public function net($salariu_brut,$asig_sociale,$asig_sociale_sanatate,$impozit_venit){
+        $salariu_net=$salariu_brut-$asig_sociale-$asig_sociale_sanatate-$impozit_venit;
+        return $salariu_net;
+    }
+}
+$salariu_brut=6000;
+$asig_sociale=0.25*$salariu_brut;
+$asig_sociale_sanatate=0.1*$salariu_brut;
+$impozit_venit=0.1*$salariu_brut;
+$salariu=new calcul_salariu();
+$salariu_net=$salariu->net($salariu_brut,$asig_sociale,$asig_sociale_sanatate,$impozit_venit);
+echo" brut: $salariu_brut \n net: $salariu_net \n";
+?>
